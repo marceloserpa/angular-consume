@@ -1,0 +1,6 @@
+backend-api/build/
+backend-api/bin/
+backend-api/.gradle/
+backend-api/.settings/
+backend-api/.classpath
+backend-api/.project
