@@ -25,13 +25,6 @@
       </div>
     </div>
 
-    <script>
-      var bookStoreApp = angular.module('bookStoreApp', []);
-      bookStoreApp.controller('BookCtrl', function ($scope, $http) {
-        $http.get("http://localhost:8080/api/books").success(function(data) {
-          $scope.books = data;
-        });
-      });
-    </script>
+    <script src="/src/app/bookstoreapp.js"></script>
   </body>
 </html>
