@@ -19,7 +19,7 @@
         <h2>My Books</h2>
         <ul class="books">
           <li ng-repeat="book in books">
-            {{book}}
+            {{book.title}} by <{{book.author}}>
           </li>
         </ul>
       </div>
@@ -27,8 +27,10 @@
 
     <script>
       var bookStoreApp = angular.module('bookStoreApp', []);
-      bookStoreApp.controller('BookCtrl', function ($scope) {
-        $scope.books = ["Book A", "Book B", "Book C"];
+      bookStoreApp.controller('BookCtrl', function ($scope, $http) {
+        $http.get("http://localhost:8080/api/books").success(function(data) {
+          $scope.books = data;
+        });
       });
     </script>
   </body>
