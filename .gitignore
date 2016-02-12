@@ -4,3 +4,5 @@ backend-api/.gradle/
 backend-api/.settings/
 backend-api/.classpath
 backend-api/.project
+.DS_Store
+bower_components
