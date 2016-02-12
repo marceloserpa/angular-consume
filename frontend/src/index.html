@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="bookStoreApp">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
@@ -14,14 +14,22 @@
   -->
   </head>
   <body>
-      <div class="row">
-        <div class="col-xs-6">
-            Angular test 2 + 3 = {{ 2 + 3}}
-        </div>
-        <div class="col-xs-6">
-          <p>OK!</p>
-        </div>
+    <div class="container">
+      <div class="row" ng-controller="BookCtrl">
+        <h2>My Books</h2>
+        <ul class="books">
+          <li ng-repeat="book in books">
+            {{book}}
+          </li>
+        </ul>
       </div>
-    <input type="text" />
+    </div>
+
+    <script>
+      var bookStoreApp = angular.module('bookStoreApp', []);
+      bookStoreApp.controller('BookCtrl', function ($scope) {
+        $scope.books = ["Book A", "Book B", "Book C"];
+      });
+    </script>
   </body>
 </html>
