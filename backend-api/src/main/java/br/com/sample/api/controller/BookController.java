@@ -1,18 +1,25 @@
 package br.com.sample.api.controller;
 
-import java.util.ArrayList;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.sample.api.database.mapper.BookMapper;
 import br.com.sample.api.model.BookModel;
 
 @RestController
 public class BookController {
+	
+	@Autowired
+	private BookMapper bookMapper;
 
 	@RequestMapping(method=RequestMethod.GET, value="api/books")
-	public ArrayList<BookModel> getBooksName(){
+	public List<BookModel> getBooksName(){
+		
+		/**
 		ArrayList<BookModel> list = new ArrayList<>();
 		BookModel book1 = new BookModel();
 		book1.setTitle("Title 1");
@@ -31,8 +38,8 @@ public class BookController {
 		book3.setDescription("Description 3");
 		book3.setAuthor("Author 3");
 		list.add(book3);
-		
-		return list;
+		*/
+		return bookMapper.getAll();
 	}
 	
 }
