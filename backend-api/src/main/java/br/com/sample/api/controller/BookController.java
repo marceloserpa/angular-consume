@@ -23,8 +23,8 @@ public class BookController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="api/books")
-	public void save(@RequestBody BookModel book){
-		bookMapper.save(book);
+	public Long save(@RequestBody BookModel book){
+		return bookMapper.save(book);
 	}	
 	
 }

@@ -2,7 +2,6 @@
 
 var bookStoreApp = angular.module('bookStoreApp', []);
 
-
 bookStoreApp.config(function ( $httpProvider) {
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 })
@@ -24,8 +23,11 @@ bookStoreApp.controller('BookController', function ($scope, $http) {
   };
 
   $scope.cleanForm = function(){
-    console.log("tsete");
-    $scope.book = {};
+    $scope.book = {
+      'title': '',
+      'description': '',
+      'author': ''
+    };
   };
 
   $scope.get();
