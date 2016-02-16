@@ -22,6 +22,12 @@ bookStoreApp.controller('BookController', function ($scope, $http) {
     });
   };
 
+  $scope.delete = function(id){
+    $http.delete('http://localhost:8080/api/books/' + id).success(function(){
+      $scope.get();
+    });
+  };
+
   $scope.cleanForm = function(){
     $scope.book = {
       'title': '',

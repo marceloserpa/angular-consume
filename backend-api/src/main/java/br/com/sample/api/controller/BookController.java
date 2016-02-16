@@ -3,6 +3,7 @@ package br.com.sample.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +26,11 @@ public class BookController {
 	@RequestMapping(method=RequestMethod.POST, value="api/books")
 	public Long save(@RequestBody BookModel book){
 		return bookMapper.save(book);
+	}	
+	
+	@RequestMapping(method=RequestMethod.DELETE, value="api/books/{id}")
+	public void delete(@PathVariable Long id){
+		bookMapper.delete(id);
 	}	
 	
 }

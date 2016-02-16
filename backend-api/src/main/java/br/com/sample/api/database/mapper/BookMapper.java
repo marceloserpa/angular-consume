@@ -16,4 +16,7 @@ public interface BookMapper {
 	@Options(useGeneratedKeys=true, keyColumn="id", keyProperty="id")
 	public Long save(BookModel model);
 	
+	@Select("delete from book where id = #{id}")	
+	public List<BookModel> delete(Long id);	
+	
 }

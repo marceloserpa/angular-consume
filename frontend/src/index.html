@@ -29,6 +29,7 @@
 
         <ul class="books">
           <li ng-repeat="actualBook in books">
+            <a ng-click="delete(actualBook.id)">Delete</a>
             {{actualBook.title}} by <{{actualBook.author}}>
           </li>
         </ul>
