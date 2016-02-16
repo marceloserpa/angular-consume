@@ -19,17 +19,28 @@
         <h2>My Books</h2>
 
         <form novalidate class="simple-form" ng-submit="save()">
-            Title: <input type="text" ng-model="book.title" /><br />
-            Description: <input type="text" ng-model="book.description" /><br />
-            Author: <input type="text" ng-model="book.author" /><br />
+          Title: <input type="text" ng-model="book.title" /><br />
+          Description: <input type="text" ng-model="book.description" /><br />
+          Author: <input type="text" ng-model="book.author" /><br />
 
-            <input type="submit" value="Save" />
-            <input type="button" ng-click="cleanForm()" value="Reset" />
-          </form>
+          <input type="submit" value="Save" />
+          <input type="button" ng-click="cleanForm()" value="Reset" />
+        </form>
+
+        <form novalidate class="simple-form" ng-submit="update()">
+          Title: <input type="text" ng-model="editForm.title" /><br />
+          Description: <input type="text" ng-model="editForm.description" /><br />
+          Author: <input type="text" ng-model="editForm.author" /><br />
+
+          <input type="submit" value="Update" />
+          <input type="button" ng-click="cleanForm()" value="Reset" />
+        </form>
+
 
         <ul class="books">
           <li ng-repeat="actualBook in books">
             <a ng-click="delete(actualBook.id)">Delete</a>
+            <a ng-click="initEditForm(actualBook.id)">Edit</a>
             {{actualBook.title}} by <{{actualBook.author}}>
           </li>
         </ul>

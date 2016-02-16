@@ -33,4 +33,15 @@ public class BookController {
 		bookMapper.delete(id);
 	}	
 	
+	@RequestMapping(method=RequestMethod.PUT, value="api/books/{id}")
+	public void update(@PathVariable Long id, @RequestBody BookModel book){
+		book.setId(id);
+		bookMapper.update(book);
+	}	
+	
+	@RequestMapping(method=RequestMethod.GET, value="api/books/{id}")
+	public BookModel getOne(@PathVariable Long id){
+		return bookMapper.getOne(id);
+	}
+	
 }
