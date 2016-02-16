@@ -5,6 +5,3 @@ create table IF NOT EXISTS book (
   author varchar(255)
 );
 
-insert into book (title, description, author) values ('The shinning', 'best sellers', 'Stephen King');
-insert into book (title, description, author) values ('The prince', 'Lorem ipsum...', 'Niccolò Machiavelli');
-insert into book (title, description, author) values ('the shinning', 'best sellers', 'Stephen King');

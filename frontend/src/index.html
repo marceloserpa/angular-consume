@@ -15,11 +15,21 @@
   </head>
   <body>
     <div class="container">
-      <div class="row" ng-controller="BookCtrl">
+      <div class="row" ng-controller="BookController">
         <h2>My Books</h2>
+
+        <form novalidate class="simple-form" ng-submit="save()">
+            Title: <input type="text" ng-model="book.title" /><br />
+            Description: <input type="text" ng-model="book.description" /><br />
+            Author: <input type="text" ng-model="book.author" /><br />
+
+            <input type="submit" value="Save" />
+            <input type="button" ng-click="cleanForm()" value="Reset" />
+          </form>
+
         <ul class="books">
-          <li ng-repeat="book in books">
-            {{book.title}} by <{{book.author}}>
+          <li ng-repeat="actualBook in books">
+            {{actualBook.title}} by <{{actualBook.author}}>
           </li>
         </ul>
       </div>
