@@ -1,4 +1,5 @@
-bookStoreApp.controller('BookController', function ($scope, $http, $routeParams) {
+
+bookStoreApp.controller('BookController', ['$scope', '$http', '$routeParams', 'action', function ($scope, $http, $routeParams, action) {
 
   $scope.editForm = {};
 
@@ -41,6 +42,12 @@ bookStoreApp.controller('BookController', function ($scope, $http, $routeParams)
     });
   };
 
+  $scope.initShowPage = function(id){
+    $http.get("http://localhost:8080/api/books/"+id).success(function(data) {
+      $scope.book = data;
+    });
+  };
+
   $scope.cleanForm = function(){
     $scope.createForm = {
       'title': '',
@@ -48,8 +55,16 @@ bookStoreApp.controller('BookController', function ($scope, $http, $routeParams)
       'author': ''
     };
   };
-  if(typeof $routeParams.id !== undefined && typeof $routeParams.id !== 'undefined'){
-    $scope.initEditForm($routeParams.id)
+
+  if(action === 'list'){
+    $scope.get();
+  } else if(action === 'edit'){
+    $scope.initEditForm($routeParams.id);
+  } else if(action == 'new') {
+    $scope.cleanForm();
+  } else if(action == 'show'){
+    $scope.initShowPage($routeParams.id);
   }
-  $scope.get();
-});
+
+
+}]);
