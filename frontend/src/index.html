@@ -16,37 +16,48 @@
   <body>
     <div class="container">
       <div class="row" ng-controller="BookController">
-        <h2>My Books</h2>
+        <div id="create-book-form">
+          <h2>Create Book</h2>
+          <form novalidate class="simple-form" ng-submit="save()">
+            <label>Title:</label>
+            <input type="text" ng-model="createForm.title" /><br />
+            <label>Description:</label>
+            <input type="text" ng-model="createForm.description" /><br />
+            <label>Author:</label>
+            <input type="text" ng-model="createForm.author" /><br />
+            <input type="submit" value="Save" />
+            <input type="button" ng-click="cleanForm()" value="Reset" />
+          </form>
+        </div>
 
-        <form novalidate class="simple-form" ng-submit="save()">
-          Title: <input type="text" ng-model="book.title" /><br />
-          Description: <input type="text" ng-model="book.description" /><br />
-          Author: <input type="text" ng-model="book.author" /><br />
-
-          <input type="submit" value="Save" />
-          <input type="button" ng-click="cleanForm()" value="Reset" />
-        </form>
-
-        <form novalidate class="simple-form" ng-submit="update()">
-          Title: <input type="text" ng-model="editForm.title" /><br />
-          Description: <input type="text" ng-model="editForm.description" /><br />
-          Author: <input type="text" ng-model="editForm.author" /><br />
-
-          <input type="submit" value="Update" />
-          <input type="button" ng-click="cleanForm()" value="Reset" />
-        </form>
-
-
-        <ul class="books">
-          <li ng-repeat="actualBook in books">
-            <a ng-click="delete(actualBook.id)">Delete</a>
-            <a ng-click="initEditForm(actualBook.id)">Edit</a>
-            {{actualBook.title}} by <{{actualBook.author}}>
-          </li>
-        </ul>
+        <div id="edit-book-form">
+          <h2>Edit Book</h2>
+          <form novalidate class="simple-form" ng-submit="update()">
+            <label>Title:</label>
+            <input type="text" ng-model="editForm.title" /><br />
+            <label>Description:</label>
+            <input type="text" ng-model="editForm.description" /><br />
+            <label>Author:</label>
+            <input type="text" ng-model="editForm.author" /><br />
+            <input type="submit" value="Update" />
+            <input type="button" ng-click="cleanForm()" value="Reset" />
+          </form>
+        </div>
+        <div id="all-book-table">
+          <h2>All Books</h2>
+          <ul class="books">
+            <li ng-repeat="actualBook in books">
+              <a ng-click="delete(actualBook.id)">Delete</a>
+              <a ng-click="initEditForm(actualBook.id)">Edit</a>
+              {{actualBook.title}} by <{{actualBook.author}}>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
     <script src="/src/app/bookstoreapp.js"></script>
+    <script src="/src/app/books/BookController.js"></script>
+
   </body>
 </html>
