@@ -1,4 +1,4 @@
-package br.com.sample.api.database.mapper;
+package br.com.sample.api.persistence;
 
 import java.util.List;
 

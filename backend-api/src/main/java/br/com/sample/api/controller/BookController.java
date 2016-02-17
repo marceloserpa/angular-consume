@@ -9,39 +9,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.sample.api.database.mapper.BookMapper;
 import br.com.sample.api.model.BookModel;
+import br.com.sample.api.persistence.BookMapper;
+import br.com.sample.api.service.BookService;
 
 @RestController
+@RequestMapping(value="api/books")
 public class BookController {
 	
-	@Autowired
-	private BookMapper bookMapper;
+	@Autowired private BookService bookService;
 
-	@RequestMapping(method=RequestMethod.GET, value="api/books")
-	public List<BookModel> get(){
-		return bookMapper.getAll();
+	@RequestMapping(method=RequestMethod.GET)
+	public List<BookModel> list(){
+		return bookService.get();
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="api/books")
-	public Long save(@RequestBody BookModel book){
-		return bookMapper.save(book);
+	@RequestMapping(method=RequestMethod.POST)
+	public Long create(@RequestBody BookModel book){
+		return bookService.save(book);
 	}	
 	
-	@RequestMapping(method=RequestMethod.DELETE, value="api/books/{id}")
+	@RequestMapping(method=RequestMethod.DELETE, value="/{id}")
 	public void delete(@PathVariable Long id){
-		bookMapper.delete(id);
+		bookService.delete(id);
 	}	
 	
-	@RequestMapping(method=RequestMethod.PUT, value="api/books/{id}")
-	public void update(@PathVariable Long id, @RequestBody BookModel book){
-		book.setId(id);
-		bookMapper.update(book);
+	@RequestMapping(method=RequestMethod.PUT, value="/{id}")
+	public void edit(@PathVariable Long id, @RequestBody BookModel book){
+		bookService.update(id, book);
 	}	
 	
-	@RequestMapping(method=RequestMethod.GET, value="api/books/{id}")
-	public BookModel getOne(@PathVariable Long id){
-		return bookMapper.getOne(id);
+	@RequestMapping(method=RequestMethod.GET, value="/{id}")
+	public BookModel findById(@PathVariable Long id){
+		return bookService.getOne(id);
 	}
 	
 }

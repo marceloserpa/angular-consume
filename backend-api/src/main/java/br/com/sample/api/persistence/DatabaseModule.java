@@ -1,4 +1,4 @@
-package br.com.sample.api.database;
+package br.com.sample.api.persistence;
 
 import javax.sql.DataSource;
 
@@ -11,7 +11,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import static org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType.H2;
 
 @Configuration
-@MapperScan("br.com.sample.api.database.mapper")
+@MapperScan("br.com.sample.api.persistence")
 public class DatabaseModule {
 	
     @Bean
