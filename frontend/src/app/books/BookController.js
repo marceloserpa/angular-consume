@@ -1,8 +1,14 @@
 (function(){
   'use strict';
-  
-  angular.module('bookStoreApp').controller('BookController', ['$scope', '$http', '$routeParams', 'action', function ($scope, $http, $routeParams, action) {
 
+  angular
+    .module('bookStoreApp')
+    .controller('BookController', BookController);
+
+  BookController.$inject = ['$scope', '$http', '$routeParams', 'action'];
+
+  function BookController($scope, $http, $routeParams, action){
+    
     $scope.editForm = {};
 
     $scope.get = function(){
@@ -68,5 +74,5 @@
       $scope.initShowPage($routeParams.id);
     }
 
-  }]);
+  };
 })();
