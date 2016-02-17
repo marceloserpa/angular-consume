@@ -1,0 +1,10 @@
+<div id="all-book-table">
+  <h2>All Books</h2>
+  <ul class="books">
+    <li ng-repeat="actualBook in books">
+      <a ng-click="delete(actualBook.id)">Delete</a>
+      <a ng-href="#/books/{{actualBook.id}}/edit">Edit</a>
+      {{actualBook.title}} by <{{actualBook.author}}>
+    </li>
+  </ul>
+</div>

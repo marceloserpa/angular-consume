@@ -1,0 +1,13 @@
+<div id="create-book-form">
+  <h2>Create Book</h2>
+  <form novalidate class="simple-form" ng-submit="save()">
+    <label>Title:</label>
+    <input type="text" ng-model="createForm.title" /><br />
+    <label>Description:</label>
+    <input type="text" ng-model="createForm.description" /><br />
+    <label>Author:</label>
+    <input type="text" ng-model="createForm.author" /><br />
+    <input type="submit" value="Save" />
+    <input type="button" ng-click="cleanForm()" value="Reset" />
+  </form>
+</div>

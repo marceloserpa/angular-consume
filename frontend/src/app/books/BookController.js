@@ -1,4 +1,4 @@
-bookStoreApp.controller('BookController', function ($scope, $http) {
+bookStoreApp.controller('BookController', function ($scope, $http, $routeParams) {
 
   $scope.editForm = {};
 
@@ -48,6 +48,8 @@ bookStoreApp.controller('BookController', function ($scope, $http) {
       'author': ''
     };
   };
-
+  if(typeof $routeParams.id !== undefined && typeof $routeParams.id !== 'undefined'){
+    $scope.initEditForm($routeParams.id)
+  }
   $scope.get();
 });
