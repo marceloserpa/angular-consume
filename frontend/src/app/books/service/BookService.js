@@ -6,9 +6,9 @@
     .constant('URL_BOOK_API', 'http://localhost:8080/api/books/')
     .service('BookService', BookService);
 
-  BookService.$inject = ['$http', 'URL_BOOK_API'];
+  BookService.$inject = ['$http', '$q', 'URL_BOOK_API'];
 
-  function BookService($http, URL_BOOK_API){
+  function BookService($http, $q, URL_BOOK_API){
 
     return {
       getAll : getAll,
@@ -53,7 +53,13 @@
     }
 
     function handleErrorHttpRequest(error){
-      console.log(error.data);
+      var newMessage = 'XHR Failed for acess Book API'
+      if (error && error.data && error.data.description) {
+        newMessage = newMessage + '\n' + error.data.description;
+      }
+      error.data = newMessage;
+      console.error(error.data);
+      $q.reject(error);
     }
 
   }
