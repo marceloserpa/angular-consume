@@ -5,9 +5,9 @@
     .module('bookStoreApp')
     .controller('BookController', BookController);
 
-  BookController.$inject = ['BookService', '$scope', '$http', '$routeParams', 'action'];
+  BookController.$inject = ['BookService', '$scope', '$routeParams', 'action'];
 
-  function BookController(BookService, $scope, $http, $routeParams, action){
+  function BookController(BookService, $scope, $routeParams, action){
 
     $scope.editForm = {};
 
@@ -31,8 +31,7 @@
     };
 
     $scope.update = function(){
-      var book = $scope.editForm;
-      BookService.update(book).then(function(){
+      BookService.update($scope.editForm).then(function(){
         $scope.get();
         $scope.cleanEditForm();
       });
