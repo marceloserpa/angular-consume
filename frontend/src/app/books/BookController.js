@@ -5,53 +5,56 @@
     .module('bookStoreApp')
     .controller('BookController', BookController);
 
-  BookController.$inject = ['$scope', '$http', '$routeParams', 'action'];
+  BookController.$inject = ['BookService', '$scope', '$http', '$routeParams', 'action'];
 
-  function BookController($scope, $http, $routeParams, action){
-    
+  function BookController(BookService, $scope, $http, $routeParams, action){
+
     $scope.editForm = {};
 
     $scope.get = function(){
-      $http.get("http://localhost:8080/api/books").success(function(data) {
+      BookService.getAll().then(function(data) {
         $scope.books = data;
       });
     };
 
     $scope.save = function(){
-      var book = $scope.createForm;
-      $http.post('http://localhost:8080/api/books', book).success(function(){
+      BookService.save($scope.createForm).then(function(data) {
         $scope.get();
         $scope.cleanForm();
       });
     };
 
     $scope.delete = function(id){
-      $http.delete('http://localhost:8080/api/books/' + id).success(function(){
+      BookService.deleteById(id).then(function(){
         $scope.get();
       });
     };
 
     $scope.update = function(){
       var book = $scope.editForm;
-      $http.put('http://localhost:8080/api/books/'+ book.id, book).success(function(){
+      BookService.update(book).then(function(){
         $scope.get();
-        $scope.editForm = {
-          'id': '',
-          'title': '',
-          'description': '',
-          'author': ''
-        };
+        $scope.cleanEditForm();
       });
     };
 
+    $scope.cleanEditForm = function(){
+      $scope.editForm = {
+        'id': '',
+        'title': '',
+        'description': '',
+        'author': ''
+      };
+    };
+
     $scope.initEditForm = function(id){
-      $http.get("http://localhost:8080/api/books/"+id).success(function(data) {
+      BookService.find(id).then(function(data) {
         $scope.editForm = data;
       });
     };
 
     $scope.initShowPage = function(id){
-      $http.get("http://localhost:8080/api/books/"+id).success(function(data) {
+      BookService.find(id).then(function(data) {
         $scope.book = data;
       });
     };
