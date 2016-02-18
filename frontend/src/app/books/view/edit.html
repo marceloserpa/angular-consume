@@ -1,13 +1,13 @@
 <div id="edit-book-form">
   <h2>Edit Book</h2>
-  <form novalidate class="simple-form" ng-submit="update()">
+  <form novalidate class="simple-form" ng-submit="bookVm.update()">
     <label>Title:</label>
-    <input type="text" ng-model="editForm.title" /><br />
+    <input type="text" ng-model="bookVm.editForm.title" /><br />
     <label>Description:</label>
-    <input type="text" ng-model="editForm.description" /><br />
+    <input type="text" ng-model="bookVm.editForm.description" /><br />
     <label>Author:</label>
-    <input type="text" ng-model="editForm.author" /><br />
+    <input type="text" ng-model="bookVm.editForm.author" /><br />
     <input type="submit" value="Update" />
-    <input type="button" ng-click="cleanForm()" value="Reset" />
+    <input type="button" ng-click="bookVm.cleanForm()" value="Reset" />
   </form>
 </div>

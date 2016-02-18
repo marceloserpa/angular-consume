@@ -5,40 +5,41 @@
     .module('bookStoreApp')
     .controller('BookController', BookController);
 
-  BookController.$inject = ['BookService', '$scope', '$routeParams', 'action'];
+  BookController.$inject = ['BookService', '$routeParams', 'action'];
 
-  function BookController(BookService, $scope, $routeParams, action){
+  function BookController(BookService, $routeParams, action){
 
-    $scope.editForm = {};
+    var vm = this;
+    vm.editForm = {};
 
-    $scope.get = function(){
+    vm.get = function(){
       BookService.getAll().then(function(data) {
-        $scope.books = data;
+        vm.books = data;
       });
     };
 
-    $scope.save = function(){
-      BookService.save($scope.createForm).then(function(data) {
-        $scope.get();
-        $scope.cleanForm();
+    vm.save = function(){
+      BookService.save(vm.createForm).then(function(data) {
+        vm.get();
+        vm.cleanForm();
       });
     };
 
-    $scope.delete = function(id){
+    vm.delete = function(id){
       BookService.deleteById(id).then(function(){
-        $scope.get();
+        vm.get();
       });
     };
 
-    $scope.update = function(){
-      BookService.update($scope.editForm).then(function(){
-        $scope.get();
-        $scope.cleanEditForm();
+    vm.update = function(){
+      BookService.update(vm.editForm).then(function(){
+        vm.get();
+        vm.cleanEditForm();
       });
     };
 
-    $scope.cleanEditForm = function(){
-      $scope.editForm = {
+    vm.cleanEditForm = function(){
+      vm.editForm = {
         'id': '',
         'title': '',
         'description': '',
@@ -46,20 +47,20 @@
       };
     };
 
-    $scope.initEditForm = function(id){
+    vm.initEditForm = function(id){
       BookService.find(id).then(function(data) {
-        $scope.editForm = data;
+        vm.editForm = data;
       });
     };
 
-    $scope.initShowPage = function(id){
+    vm.initShowPage = function(id){
       BookService.find(id).then(function(data) {
-        $scope.book = data;
+        vm.book = data;
       });
     };
 
-    $scope.cleanForm = function(){
-      $scope.createForm = {
+    vm.cleanForm = function(){
+      vm.createForm = {
         'title': '',
         'description': '',
         'author': ''
@@ -67,13 +68,13 @@
     };
 
     if(action === 'list'){
-      $scope.get();
+      vm.get();
     } else if(action === 'edit'){
-      $scope.initEditForm($routeParams.id);
+      vm.initEditForm($routeParams.id);
     } else if(action == 'new') {
-      $scope.cleanForm();
+      vm.cleanForm();
     } else if(action == 'show'){
-      $scope.initShowPage($routeParams.id);
+      vm.initShowPage($routeParams.id);
     }
 
   };
