@@ -10,35 +10,50 @@
   function BookController(BookService, $routeParams, action){
 
     var vm = this;
-    vm.editForm = {};
 
-    vm.get = function(){
+    vm.editForm = {};
+    vm.createForm = {};
+    vm.book = {};
+
+    vm.get = get;
+    vm.save = save;
+    vm.deleteBook = deleteBook;
+    vm.update = update;
+
+    vm.cleanForm = cleanForm;
+    vm.cleanEditForm = cleanEditForm;
+
+    vm.initEditForm = initEditForm;
+    vm.initShowPage = initShowPage;
+
+
+    function get(){
       BookService.getAll().then(function(data) {
         vm.books = data;
       });
     };
 
-    vm.save = function(){
+    function save(){
       BookService.save(vm.createForm).then(function(data) {
         vm.get();
         vm.cleanForm();
       });
     };
 
-    vm.delete = function(id){
+    function deleteBook(id){
       BookService.deleteById(id).then(function(){
         vm.get();
       });
     };
 
-    vm.update = function(){
+    function update(){
       BookService.update(vm.editForm).then(function(){
         vm.get();
         vm.cleanEditForm();
       });
     };
 
-    vm.cleanEditForm = function(){
+    function cleanEditForm(){
       vm.editForm = {
         'id': '',
         'title': '',
@@ -47,19 +62,19 @@
       };
     };
 
-    vm.initEditForm = function(id){
+    function initEditForm(id){
       BookService.find(id).then(function(data) {
         vm.editForm = data;
       });
     };
 
-    vm.initShowPage = function(id){
+    function initShowPage(id){
       BookService.find(id).then(function(data) {
         vm.book = data;
       });
     };
 
-    vm.cleanForm = function(){
+    function cleanForm(){
       vm.createForm = {
         'title': '',
         'description': '',

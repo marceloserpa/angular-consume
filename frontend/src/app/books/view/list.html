@@ -2,7 +2,7 @@
   <h2>All Books</h2>
   <ul class="books">
     <li ng-repeat="actualBook in bookVm.books">
-      <a ng-click="bookVm.delete(actualBook.id)">Delete</a>
+      <a ng-click="bookVm.deleteBook(actualBook.id)">Delete</a>
       <a ng-href="#/books/{{actualBook.id}}/edit">Edit</a>
       <a ng-href="#/books/{{actualBook.id}}/show">Details</a>
       {{actualBook.title}} by <{{actualBook.author}}>
