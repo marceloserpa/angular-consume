@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Date;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -23,5 +24,13 @@ public class JWTHelper {
                 .signWith(SignatureAlgorithm.HS512, AUTH_KEY)
                 .compact();
     }	
+    
+    public Claims parse(String token) {
+    	System.out.println(token);
+        return Jwts.parser()
+                .setSigningKey(AUTH_KEY)
+                .parseClaimsJws(token)
+                .getBody();
+    }
 	
 }

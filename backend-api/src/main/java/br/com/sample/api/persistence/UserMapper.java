@@ -9,4 +9,7 @@ public interface UserMapper {
 	@Select("select id from users where username = #{username} and password = #{password}")
 	public String autenticate(UserModel user);
 	
+	@Select("select count(id) from users where id = #{id}")
+	public Long exists(String id);
+	
 }

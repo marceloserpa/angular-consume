@@ -19,5 +19,10 @@ public class AutenticationController {
 	public AutenticationResponseModel autenticate(UserModel user){
 		return autenticationService.autenticate(user);
 	}
+
+	@RequestMapping(method=RequestMethod.GET, value="/testAccess")
+	public String onlyAuthorizadePeople(){
+		return "Ok";
+	}	
 	
 }
