@@ -30,6 +30,7 @@ dependencies {
     compile("org.mybatis:mybatis:3.3.0")
     compile("org.mybatis:mybatis-spring:1.2.3")
     compile("com.h2database:h2:1.4.190")
+    compile("io.jsonwebtoken:jjwt:0.5")
     testCompile("junit:junit")
 }
 
