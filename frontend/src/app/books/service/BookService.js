@@ -2,7 +2,7 @@
   'use strict'
 
   angular
-    .module('bookStoreApp')
+    .module('books')
     .constant('URL_BOOK_API', 'http://localhost:8080/api/books/')
     .service('BookService', BookService);
 

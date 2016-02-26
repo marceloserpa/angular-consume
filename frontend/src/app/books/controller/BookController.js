@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('bookStoreApp')
+    .module('books')
     .controller('BookController', BookController);
 
   BookController.$inject = ['BookService', '$routeParams', 'action'];

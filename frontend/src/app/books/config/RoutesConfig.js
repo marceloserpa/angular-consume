@@ -2,7 +2,7 @@
   'use strict'
 
   angular
-    .module('bookStoreApp')
+    .module('books')
     .config(ConfigureRoutes);
 
   ConfigureRoutes.$inject = ['$routeProvider'];

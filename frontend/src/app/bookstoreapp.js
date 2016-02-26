@@ -1,6 +1,6 @@
 (function(){
   'use strict';
 
-  angular.module('bookStoreApp', ['ngRoute']);
+  angular.module('bookStoreApp', ['books']);
 
 })();
