@@ -25,8 +25,11 @@ public class JWTHelper {
                 .compact();
     }	
     
+    public Long parseToId(String token){
+    	return Long.valueOf(parse(token).getSubject());
+    }
+    
     public Claims parse(String token) {
-    	System.out.println(token);
         return Jwts.parser()
                 .setSigningKey(AUTH_KEY)
                 .parseClaimsJws(token)

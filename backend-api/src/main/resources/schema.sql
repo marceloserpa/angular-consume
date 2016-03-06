@@ -11,4 +11,5 @@ create table IF NOT EXISTS users (
   password varchar(255)
 );
 
-insert into users (username, password) values ('admin', '21232f297a57a5a743894a0e4a801fc3')
+--insert into users (username, password) values ('admin', '21232f297a57a5a743894a0e4a801fc3')
+insert into users (username, password) values ('admin', 'admin')
