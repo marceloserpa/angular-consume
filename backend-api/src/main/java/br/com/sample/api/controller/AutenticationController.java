@@ -18,11 +18,6 @@ public class AutenticationController {
 	@RequestMapping(method=RequestMethod.POST, value="/oauth/token")
 	public AutenticationResponseModel autenticate(UserModel user){
 		return autenticationService.autenticate(user);
-	}
-
-	@RequestMapping(method=RequestMethod.GET, value="/testAccess")
-	public String onlyAuthorizadePeople(){
-		return "Ok";
 	}	
 	
 }

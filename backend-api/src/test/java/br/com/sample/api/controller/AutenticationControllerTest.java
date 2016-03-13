@@ -24,7 +24,6 @@ import br.com.sample.api.Application;
 import br.com.sample.api.helper.JWTHelper;
 import junit.framework.Assert;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Application.class)
 @WebAppConfiguration

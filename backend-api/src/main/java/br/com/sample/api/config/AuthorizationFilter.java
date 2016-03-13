@@ -11,11 +11,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import br.com.sample.api.service.AutenticationService;
 
-@Component
 public class AuthorizationFilter implements Filter {
  
 	@Autowired AutenticationService autenticationService;

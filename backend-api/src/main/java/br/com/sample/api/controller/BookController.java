@@ -14,7 +14,7 @@ import br.com.sample.api.persistence.BookMapper;
 import br.com.sample.api.service.BookService;
 
 @RestController
-@RequestMapping(value="api/books")
+@RequestMapping(value="api/resources/books")
 public class BookController {
 	
 	@Autowired private BookService bookService;
